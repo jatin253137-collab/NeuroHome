@@ -1,0 +1,16 @@
+{
+  "name": "NeuroHome",
+  "short_name": "NeuroHome",
+  "description": "Luxury intelligent home operating system.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f3ef",
+  "theme_color": "#f5f3ef",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
