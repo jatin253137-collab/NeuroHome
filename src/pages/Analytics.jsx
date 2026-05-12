@@ -147,21 +147,22 @@ function LiveMetric({ index = 0, icon: Icon, label, value, trend, good }) {
       layout
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
+      whileHover={{ y: -2 }}
       transition={{ duration: 0.55, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
-      className="flex h-full flex-col justify-between rounded-cloud border border-white/40 bg-white/42 p-5 shadow-insetSoft backdrop-blur-xl"
+      className="flex h-full flex-col justify-between rounded-cloud border border-white/85 bg-white/88 p-5 shadow-[0_14px_40px_rgba(15,23,42,0.055)] shadow-insetSoft backdrop-blur-xl transition-cinematic hover:bg-white/95 hover:border-white/90 hover:shadow-[0_18px_48px_rgba(15,23,42,0.08)]"
     >
       <div className="flex items-start justify-between gap-4">
-        <span className="grid h-11 w-11 place-items-center rounded-2xl bg-white/58 text-slateSoft shadow-insetSoft">
+        <span className="grid h-11 w-11 place-items-center rounded-2xl border border-white/70 bg-white/92 text-slateSoft shadow-insetSoft">
           <Icon size={19} />
         </span>
-        <span className="inline-flex items-center gap-1 rounded-full bg-white/54 px-3 py-1 text-xs font-semibold text-slateSoft">
+        <span className="inline-flex items-center gap-1 rounded-full border border-white/60 bg-white/80 px-3 py-1 text-xs font-semibold text-slateSoft">
           <TrendIcon size={14} className={good ? 'text-sage' : 'text-slateSoft'} />
           {trend}
         </span>
       </div>
       <div className="mt-6">
-        <p className="text-[11px] font-semibold uppercase tracking-wider text-graphite/60">{label}</p>
-        <p className="mt-1 text-3xl font-semibold tracking-tight text-graphite">{value}</p>
+        <p className="text-[11px] font-semibold uppercase tracking-wider text-graphite/80">{label}</p>
+        <p className="mt-1 text-3xl font-semibold tracking-tight text-graphite/88">{value}</p>
       </div>
     </motion.div>
   );
@@ -169,15 +170,15 @@ function LiveMetric({ index = 0, icon: Icon, label, value, trend, good }) {
 
 function AnalyticsStat({ index = 0, label, value, trend }) {
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.55, delay: index * 0.12 + 0.3, ease: [0.22, 1, 0.36, 1] }}
-      className="rounded-soft bg-white/42 p-5"
+      className="rounded-soft bg-white/60 p-5"
     >
-      <p className="text-[11px] font-semibold uppercase tracking-wider text-graphite/60">{label}</p>
+      <p className="text-[11px] font-semibold uppercase tracking-wider text-graphite/72">{label}</p>
       <p className="mt-2 text-3xl font-semibold text-graphite">{value}</p>
-      <p className="mt-3 inline-flex items-center gap-2 rounded-full bg-white/50 px-3 py-1 text-xs font-semibold text-slateSoft">
+      <p className="mt-3 inline-flex items-center gap-2 rounded-full bg-white/60 px-3 py-1 text-xs font-semibold text-slateSoft">
         <Activity size={13} className="text-sage" />
         {trend}
       </p>

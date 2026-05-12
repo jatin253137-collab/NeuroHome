@@ -92,7 +92,7 @@ export function Security() {
               />
             ) : null}
           </div>
-          <div className="mt-5 rounded-soft bg-white/42 p-5">
+          <div className="mt-5 rounded-soft border border-white/60 bg-white/60 p-5">
             <p className="text-sm font-semibold text-graphite">Recent scan</p>
             <p className="mt-2 text-sm leading-6 text-slateSoft">
               Perimeter clear, camera latency stable, and lock battery reported healthy.
@@ -179,15 +179,19 @@ function SecurityRow({ icon: Icon, label, value }) {
 
 function SecurityDevice({ icon: Icon, title, value, checked, onToggle }) {
   return (
-    <div className="rounded-cloud bg-white/42 p-5">
+    <motion.div
+      whileHover={{ y: -2 }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+      className="rounded-cloud border border-white/90 bg-white/92 p-5 shadow-[0_16px_42px_rgba(15,23,42,0.06)] shadow-insetSoft backdrop-blur-xl transition-cinematic hover:bg-white/97 hover:border-white/95 hover:shadow-[0_20px_50px_rgba(15,23,42,0.09)]"
+    >
       <div className="flex items-start justify-between gap-4">
-        <span className="grid h-12 w-12 place-items-center rounded-2xl bg-graphite text-porcelain">
+        <span className="grid h-12 w-12 place-items-center rounded-2xl border border-white/85 bg-graphite text-porcelain shadow-[0_6px_18px_rgba(15,23,42,0.05)] shadow-insetSoft">
           <Icon size={20} />
         </span>
         <ToggleSwitch checked={checked} label={title} onChange={onToggle} />
       </div>
-      <p className="mt-7 text-sm text-slateSoft">{title}</p>
-      <h3 className="mt-1 text-2xl font-semibold text-graphite">{value}</h3>
-    </div>
+      <p className="mt-7 text-sm text-graphite/76">{title}</p>
+      <h3 className="mt-1 text-2xl font-semibold text-graphite/92">{value}</h3>
+    </motion.div>
   );
 }

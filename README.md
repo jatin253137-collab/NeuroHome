@@ -48,7 +48,7 @@ npm run dev
 
 ## Production Deployment
 
-The project is fully optimized for edge deployment. It utilizes aggressive code-splitting (`React.lazy`) and includes standard SPA routing fallback configuration.
+The project is fully optimized for edge deployment (e.g., Vercel, Netlify). It utilizes aggressive code-splitting (`React.lazy`) and includes standard SPA routing fallback configuration.
 
 **To build for production:**
 ```bash

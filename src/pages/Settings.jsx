@@ -117,7 +117,7 @@ function SettingRow({ icon: Icon, title, text, checked, onToggle }) {
         'flex flex-col items-start justify-between gap-4 rounded-soft border p-5 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:flex-row sm:items-center',
         checked
           ? 'border-transparent bg-gradient-to-r from-sage/10 to-white/60 shadow-[inset_3px_0_0_rgba(139,167,161,0.4),inset_0_2px_15px_rgba(255,255,255,0.5)]'
-          : 'border-white/20 bg-white/30 hover:border-white/30 hover:bg-white/45'
+          : 'border-[#ffffff] bg-white/82 shadow-[0_14px_34px_rgba(15,23,42,0.045)] ring-1 ring-white/80 hover:bg-white/88'
       )}
     >
       <div className="flex items-center gap-4">
@@ -130,8 +130,8 @@ function SettingRow({ icon: Icon, title, text, checked, onToggle }) {
           <Icon size={20} />
         </span>
         <div>
-          <h3 className="font-semibold tracking-tight text-graphite">{title}</h3>
-          <p className="mt-1 text-sm leading-6 text-graphite/75">{text}</p>
+          <h3 className="font-semibold tracking-tight text-graphite/92">{title}</h3>
+          <p className="mt-1 text-sm leading-6 text-graphite/72">{text}</p>
         </div>
       </div>
       <ToggleSwitch checked={checked} label={title} onChange={onToggle} />

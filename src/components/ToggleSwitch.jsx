@@ -12,7 +12,7 @@ export function ToggleSwitch({ checked, onChange, label }) {
         'relative h-8 w-14 overflow-hidden rounded-full border p-1 transition-cinematic',
         checked
           ? 'border-sage/30 bg-sage/60 shadow-[0_6px_18px_rgba(139,167,161,0.2)]'
-          : 'border-stonewash/55 bg-linen/70 hover:bg-linen hover:border-stonewash/75',
+          : 'border-stonewash/70 bg-stonewash/40 hover:bg-stonewash/55 hover:border-stonewash/80',
       )}
     >
       {checked ? (
