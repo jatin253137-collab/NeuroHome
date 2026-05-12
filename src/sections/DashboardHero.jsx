@@ -47,42 +47,47 @@ export function DashboardHero() {
         transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut', delay: 2.5 }}
         style={{ background: activeScene.glow }}
       />
-      <div className="relative z-10 flex min-h-[560px] flex-col justify-between p-6 sm:p-8">
+      <div className="relative z-10 flex min-h-[560px] flex-col justify-between p-5 sm:p-8">
+        {/* ── Top row: greeting + stat pills ── */}
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div className="max-w-xl">
-            <p className="inline-flex items-center gap-2 rounded-full bg-porcelain/20 px-4 py-2 text-sm font-medium text-porcelain backdrop-blur-xl">
-              <Sparkles size={16} />
+            <p className="inline-flex items-center gap-2 rounded-full bg-porcelain/20 px-3 py-1.5 text-xs font-medium text-porcelain backdrop-blur-xl sm:px-4 sm:py-2 sm:text-sm">
+              <Sparkles size={14} className="sm:h-4 sm:w-4" />
               {activeScene.name} scene active
             </p>
-            <h1 className="mt-6 max-w-xl text-4xl font-semibold leading-tight text-porcelain [text-shadow:0_10px_26px_rgba(0,0,0,0.32)] sm:text-5xl lg:text-6xl">
+            <h1 className="mt-4 max-w-xl text-3xl font-semibold leading-tight text-porcelain [text-shadow:0_10px_26px_rgba(0,0,0,0.32)] sm:mt-6 sm:text-5xl lg:text-6xl">
               {getGreeting()}, Jatin
             </h1>
-            <p className="mt-4 max-w-lg text-base leading-7 text-porcelain/80 [text-shadow:0_7px_18px_rgba(0,0,0,0.28)]">
+            <p className="mt-3 max-w-lg text-sm leading-6 text-porcelain/80 [text-shadow:0_7px_18px_rgba(0,0,0,0.28)] sm:mt-4 sm:text-base sm:leading-7">
               NeuroHome has balanced comfort, lighting, and security for a quiet evening at home.
             </p>
           </div>
-          <div className="grid grid-cols-2 gap-3 sm:min-w-72">
-            <div className="rounded-soft border border-white/20 bg-porcelain/18 p-4 text-porcelain backdrop-blur-xl">
+          <div className="grid grid-cols-2 gap-2 sm:min-w-72 sm:gap-3">
+            <div className="rounded-soft border border-white/20 bg-porcelain/18 p-3 text-porcelain backdrop-blur-xl sm:p-4">
               <p className="text-xs text-porcelain/64">Local time</p>
-              <p className="mt-2 text-2xl font-semibold">{time}</p>
+              <p className="mt-1.5 text-xl font-semibold sm:mt-2 sm:text-2xl">{time}</p>
             </div>
-            <div className="rounded-soft border border-white/20 bg-porcelain/18 p-4 text-porcelain backdrop-blur-xl">
+            <div className="rounded-soft border border-white/20 bg-porcelain/18 p-3 text-porcelain backdrop-blur-xl sm:p-4">
               <p className="text-xs text-porcelain/64">Outside</p>
-              <p className="mt-2 flex items-center gap-2 text-lg font-semibold">
-                <CloudSun size={19} />
+              <p className="mt-1.5 flex items-center gap-1.5 text-base font-semibold sm:mt-2 sm:gap-2 sm:text-lg">
+                <CloudSun size={17} className="shrink-0 sm:hidden" />
+                <CloudSun size={19} className="hidden shrink-0 sm:block" />
                 {environment.outsideWeather}
               </p>
             </div>
           </div>
         </div>
 
-        <div>
-          <div className="mb-5 flex flex-wrap gap-3">
+        {/* ── Bottom row: status pills + room cards ── */}
+        <div className="mt-6 sm:mt-0">
+          {/* Status pills — wrap cleanly on mobile */}
+          <div className="mb-4 flex flex-wrap gap-2 sm:mb-5 sm:gap-3">
             <StatusIndicator active label={`${activeDevices} devices active`} />
             <StatusIndicator active label={`${environment.airQuality} AQI`} />
             <StatusIndicator active label={`${environment.energyNow} kW live`} />
           </div>
-          <div className="grid gap-3 sm:grid-cols-4">
+          {/* Room cards — 2-col on mobile, 4-col from sm */}
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3">
             {rooms.map((room, i) => {
               const RoomIcon = roomIcons[i] ?? roomIcons[0];
               return (
@@ -91,14 +96,15 @@ export function DashboardHero() {
                   to="/rooms"
                   whileHover={{ y: -2, backgroundColor: 'rgba(247,244,238,0.22)' }}
                   transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                  className="block rounded-soft border border-white/15 bg-porcelain/15 p-4 text-porcelain shadow-insetSoft backdrop-blur-xl transition-colors duration-500"
+                  className="block rounded-soft border border-white/15 bg-porcelain/15 p-3 text-porcelain shadow-insetSoft backdrop-blur-xl transition-colors duration-500 sm:p-4"
                 >
-                  <div className="flex items-center justify-between gap-3">
-                    <RoomIcon size={18} />
-                    <span className="h-2 w-2 rounded-full" style={{ backgroundColor: room.accent }} />
+                  <div className="flex items-center justify-between gap-2">
+                    <RoomIcon size={16} className="sm:hidden" />
+                    <RoomIcon size={18} className="hidden sm:block" />
+                    <span className="h-2 w-2 shrink-0 rounded-full" style={{ backgroundColor: room.accent }} />
                   </div>
-                  <p className="mt-5 text-sm text-porcelain/64">{room.floor}</p>
-                  <h3 className="mt-1 font-semibold">{room.name}</h3>
+                  <p className="mt-3 text-xs text-porcelain/64 sm:mt-5 sm:text-sm">{room.floor}</p>
+                  <h3 className="mt-0.5 text-sm font-semibold sm:mt-1 sm:text-base">{room.name}</h3>
                 </MotionLink>
               );
             })}
