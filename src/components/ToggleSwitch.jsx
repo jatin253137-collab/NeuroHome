@@ -8,6 +8,7 @@ export function ToggleSwitch({ checked, onChange, label }) {
       aria-label={label}
       aria-pressed={checked}
       onClick={onChange}
+      onPointerDownCapture={(e) => e.stopPropagation()}
       className={cn(
         'relative h-8 w-14 overflow-hidden rounded-full border p-1 transition-cinematic',
         checked

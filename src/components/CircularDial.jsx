@@ -43,7 +43,7 @@ export function CircularDial({ label, value, min = 16, max = 30, suffix = '°', 
           </p>
         </div>
       </div>
-      <div className="mt-2 flex items-center gap-3">
+      <div className="mt-2 flex items-center gap-3" onPointerDownCapture={(e) => e.stopPropagation()}>
         <button
           type="button"
           aria-label={`Lower ${label}`}

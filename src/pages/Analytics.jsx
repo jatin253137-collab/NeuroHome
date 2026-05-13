@@ -70,7 +70,7 @@ export function Analytics() {
             <h2 className="mt-2 text-xl font-semibold text-graphite">Device energy share</h2>
           </div>
           <div className="grid gap-6 md:grid-cols-[1fr_auto] lg:grid-cols-1 xl:grid-cols-[1fr_auto]">
-            <div className="h-56">
+            <div className="h-56" onPointerDownCapture={(e) => e.stopPropagation()}>
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie

@@ -26,6 +26,7 @@ export function SliderControl({
         max={max}
         value={value}
         onChange={(event) => onChange(Number(event.target.value))}
+        onPointerDownCapture={(e) => e.stopPropagation()}
         className="smart-slider"
         style={{
           background: `linear-gradient(90deg, rgba(139,167,161,0.92) 0%, rgba(207,197,182,0.88) ${progress}%, rgba(255,255,255,0.58) ${progress}%, rgba(255,255,255,0.58) 100%)`,

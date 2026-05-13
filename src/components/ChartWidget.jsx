@@ -19,7 +19,7 @@ export function ChartWidget({ title, eyebrow, value, data, dataKey = 'usage', co
         </div>
         {value ? <p className="text-2xl font-semibold text-graphite">{value}</p> : null}
       </div>
-      <div className={chartHeight}>
+      <div className={chartHeight} onPointerDownCapture={(e) => e.stopPropagation()}>
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={data} margin={{ top: 12, right: 12, left: -26, bottom: 0 }}>
             <defs>

@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { AmbientBackground } from './components/AmbientBackground.jsx';
@@ -15,12 +15,19 @@ const Settings = lazy(() => import('./pages/Settings.jsx').then(m => ({ default:
 
 export default function App() {
   const location = useLocation();
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 1024);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <>
       <AmbientBackground />
       <FloatingNavbar />
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode={isMobile ? 'popLayout' : 'wait'}>
         <Suspense fallback={null}>
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Dashboard />} />
